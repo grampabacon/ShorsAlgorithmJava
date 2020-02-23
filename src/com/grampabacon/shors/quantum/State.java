@@ -32,7 +32,7 @@ public class State {
         for (List<QuantumMap> maps : this.entangled_states.values()) {
             entangled += maps.size();
         }
-        return entangled
+        return entangled;
     }
 
     public int getEntangledStatesLength(QubitRegister register) {
