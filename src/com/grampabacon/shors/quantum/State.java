@@ -46,4 +46,12 @@ public class State {
     public QubitRegister getRegister() {
         return register;
     }
+
+    public HashMap<QubitRegister, List<QuantumMap>> getEntangled_states() {
+        return entangled_states;
+    }
+
+    public Complex getAmplitude() {
+        return amplitude;
+    }
 }

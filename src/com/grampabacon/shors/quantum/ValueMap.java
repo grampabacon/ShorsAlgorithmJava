@@ -4,12 +4,12 @@ import org.apache.commons.math3.complex.Complex;
 
 import java.math.BigInteger;
 
-public class QuantumMap {
-    private State state;
+public class ValueMap {
+    private int value;
     private Complex amplitude;
 
-    public QuantumMap(State state, Complex amplitude) {
-        this.state = state;
+    public ValueMap(int value, Complex amplitude) {
+        this.value = value;
         this.amplitude = amplitude;
     }
 
@@ -21,7 +21,9 @@ public class QuantumMap {
         this.amplitude = amplitude;
     }
 
-    public State getState() {
-        return state;
+    public int getValue() {
+        return value;
     }
+
+
 }
