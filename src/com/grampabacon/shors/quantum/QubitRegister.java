@@ -74,23 +74,21 @@ public class QubitRegister {
         }
         normalise(map_tensor_x);
         normalise(map_tensor_y);
-        map_tensor_x.forEach((x, value) -> {
-            value.forEach((y, element) -> {
-                Complex amplitude = element.getAmplitude();
+        map_tensor_x.forEach((x, value) -> value.forEach((y, element) -> {
+            Complex amplitude = element.getAmplitude();
 
-                State toState = register.states.get(y);
-                State fromState = this.states.get(x);
+            State toState = register.states.get(y);
+            State fromState = this.states.get(x);
 
-                toState.entangle(fromState, amplitude);
-                fromState.entangle(toState, amplitude.conjugate());
-            });
-        });
+            toState.entangle(fromState, amplitude);
+            fromState.entangle(toState, amplitude.conjugate());
+        }));
         if (propagate) {
             register.propagate(this);
         }
     }
 
-    public HashMap<Integer, HashMap<Integer, ValueMap>> normalise(HashMap<Integer, HashMap<Integer, ValueMap>> tensor) {
+    public void normalise(HashMap<Integer, HashMap<Integer, ValueMap>> tensor) {
         for (HashMap<Integer, ValueMap> vector : tensor.values()) {
             double sumProb = 0.0;
             for (ValueMap element : vector.values()) {
