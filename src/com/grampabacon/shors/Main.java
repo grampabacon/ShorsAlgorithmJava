@@ -30,7 +30,7 @@ public class Main {
         System.out.print("Qubit registers created.");
         System.out.print("Performing hadamard gate on input register.");
 
-        input_register.map(hadamard_input_register, (x) -> Hadamard.perform(x, q), false);
+        input_register.map_hadamard(hadamard_input_register, (x) -> Hadamard.perform(x, q), false);
 
         System.out.print("Hadamard performed");
     }

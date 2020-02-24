@@ -24,6 +24,4 @@ public class ValueMap {
     public int getValue() {
         return value;
     }
-
-
 }
