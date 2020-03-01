@@ -1,6 +1,6 @@
 package com.grampabacon.shors.quantum;
 
-import org.apache.commons.math3.complex.Complex;
+import com.grampabacon.shors.classical.Complex;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,34 +9,34 @@ import java.util.List;
 public class State {
     private Complex amplitude;
     private QubitRegister register;
-    private HashMap<QubitRegister, List<QuantumMap>> entangled_states;
+    private HashMap<QubitRegister, List<QuantumMap>> entangledStates;
 
     public State(Complex amplitude, QubitRegister register) {
         this.amplitude = amplitude;
         this.register = register;
-        this.entangled_states = new HashMap<QubitRegister, List<QuantumMap>>();
+        this.entangledStates = new HashMap<>();
     }
 
     public void entangle(State state, Complex amplitude) {
         QubitRegister qubitRegister = state.getRegister();
         QuantumMap entanglement = new QuantumMap(state, amplitude);
         try {
-            this.entangled_states.get(qubitRegister).add(entanglement);
+            this.entangledStates.get(qubitRegister).add(entanglement);
         } catch (Exception e) {
-            this.entangled_states.put(qubitRegister, Arrays.asList(entanglement));
+            this.entangledStates.put(qubitRegister, Arrays.asList(entanglement));
         }
     }
 
     public int getEntangledStatesLength() {
         int entangled = 0;
-        for (List<QuantumMap> maps : this.entangled_states.values()) {
+        for (List<QuantumMap> maps : this.entangledStates.values()) {
             entangled += maps.size();
         }
         return entangled;
     }
 
     public int getEntangledStatesLength(QubitRegister register) {
-        return this.entangled_states.get(register).size();
+        return this.entangledStates.get(register).size();
     }
 
     public void setAmplitude(Complex amplitude) {
@@ -47,8 +47,8 @@ public class State {
         return register;
     }
 
-    public HashMap<QubitRegister, List<QuantumMap>> getEntangled_states() {
-        return entangled_states;
+    public HashMap<QubitRegister, List<QuantumMap>> getEntangledStates() {
+        return entangledStates;
     }
 
     public Complex getAmplitude() {

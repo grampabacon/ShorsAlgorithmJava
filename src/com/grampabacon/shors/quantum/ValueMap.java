@@ -1,8 +1,6 @@
 package com.grampabacon.shors.quantum;
 
-import org.apache.commons.math3.complex.Complex;
-
-import java.math.BigInteger;
+import com.grampabacon.shors.classical.Complex;
 
 public class ValueMap {
     private int value;

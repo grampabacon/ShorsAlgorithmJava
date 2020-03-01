@@ -14,8 +14,8 @@ public class GreatestCommonDivisor {
     }
 
     public static ArrayList<Integer> extendedGCD(int a, int b) {
-        ArrayList<Integer> fractions = new ArrayList<Integer>();
-        while (b > 0) {
+        ArrayList<Integer> fractions = new ArrayList<>();
+        while (b != 0) {
             fractions.add(a / b);
 
             int _t = a % b;

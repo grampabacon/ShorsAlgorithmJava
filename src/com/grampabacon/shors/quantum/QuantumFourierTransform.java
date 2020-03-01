@@ -5,20 +5,18 @@ import com.grampabacon.shors.classical.Complex;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hadamard {
-    public static int bitCount(int N) {
-        int sum = 0;
-        while (N > 0) {
-            sum += N & 1;
-            N >>= 1;
-        }
-        return sum;
-    }
+public class QuantumFourierTransform {
 
     public static List<ValueMap> perform(int N, int Q) {
+        double dQ = (float) Q;
+        double k = -2.0 * Math.PI;
+
         List<ValueMap> codomain = new ArrayList<>();
+
         for (int i = 0; i < Q; i++) {
-            codomain.add(new ValueMap(i, new Complex(Math.pow(-1.0, bitCount(N & i) & 1))));
+            double angle = (k * ((float) (N * i) % Q)) / dQ;
+            Complex amplitude = new Complex(Math.cos(angle), Math.sin(angle));
+            codomain.add(new ValueMap(i, amplitude));
         }
         return codomain;
     }

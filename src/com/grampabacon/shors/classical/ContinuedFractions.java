@@ -8,7 +8,7 @@ public class ContinuedFractions {
         int depth = 2;
 
         int rCF = 0;
-        for (int i = depth; i <= fractions.size() + 1; i++) {
+        for (int i = depth; i <= fractions.size() - 1; i++) {
             int _r = partial(fractions, i);
             if (_r == rCF || _r >= N) {
                 return rCF;
@@ -23,7 +23,7 @@ public class ContinuedFractions {
         int c = 0;
         int r = 1;
 
-        for (int i = depth; i >= 0; i--) {
+        for (int i = depth - 1; i >= 0; i--) {
             int _c = fractions.get(i) * r + c;
             c = r;
             r = _c;
