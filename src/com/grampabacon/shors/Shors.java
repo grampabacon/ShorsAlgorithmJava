@@ -92,13 +92,11 @@ public class Shors {
 
         circuit.addFunction(new FunctionParser(format("%s ^ x mod %s", a, n)));
 
-        // Seem to need to measure Y for the register entanglement to work.
         addYMeasurement(circuit);
         circuit.addInvQFT(false);
         addXMeasurement(circuit);
 
-        // Note that the following runs a small risk of returning a wrong answer.
-        // Perhaps you are supposed to run multiple times until you get an answer more than once????
+        // Note that the following runs a small risk of returning a wrong answer. Quantum nature.
         while (true) {
             runCircuit(circuit);
             int j = read(circuit.getXRegister());
@@ -114,7 +112,7 @@ public class Shors {
     }
 
     private int read(Register register) {
-        // Assuming a "measurement" has been made, one state should equal 1, and the rest should be zero.
+        // One state should equal 1, and the rest should be zero.
         double[] real = register.getReal();
         double[] imaginary = register.getImaginary();
         for (int stateNum = 0; stateNum < real.length; stateNum++) {
@@ -123,7 +121,7 @@ public class Shors {
                 return stateNum;
             }
         }
-        throw new IllegalStateException("Indeteminate state");
+        throw new IllegalStateException("Indeterminate state");
     }
 
     private void addYMeasurement(Circuit circuit) throws Exception {
